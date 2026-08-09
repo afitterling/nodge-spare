@@ -1,16 +1,21 @@
 # NodgeSpare
 
 A tiny macOS menu bar utility that **spares the notch**: it parks a blank, resizable status
-item over the camera cutout so your other menu bar icons get pushed clear of it instead of
-disappearing behind it.
+item in the notch zone so that zone is claimed by nothing, and your real icons line up clear
+of the cutout.
 
 Native Swift + AppKit. No Dock icon, no window, ~200 KB binary, zero dependencies.
 
 ## Why
 
-On notched Macs the menu bar is really two strips with a dead zone between them. Once you have
-enough status items, the overflow slides under the notch and becomes unreachable. NodgeSpare
-occupies that dead zone with an item of exactly the notch's width, so nothing else can land there.
+On notched Macs the menu bar is really two strips with a dead zone between them. Status items
+fill right-to-left, and whatever reaches the notch gets swallowed by it. NodgeSpare claims that
+dead zone with an item exactly the notch's width, so the icons you care about can't land there.
+
+**What this is not:** a spacer *consumes* menu bar width, it doesn't create any. It will not
+bring back icons that are already hidden — if your menu bar is overflowing, reserving another
+185 pt makes the overflow worse, not better. Use it to keep the notch zone deliberately empty
+when you have room to spare; use a manager like Ice or Bartender if you need to *fit* more icons.
 
 ## Build & run
 
